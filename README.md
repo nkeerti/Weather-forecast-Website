@@ -1,6 +1,7 @@
 # Weather-forecast-Website
-#heading
-About the Website
+# About the Website
+#Weather App website is built using HTML,CSS and inline javascript to show the weather forecast of a particular city entered by the user.It uses the api od openweather (https://openweathermap.org/api) to show the weather details like temperature,humidity and current weather condition. 
+
 #Github hosted link: https://nkeerti.github.io/Weather-forecast-Website/
 
 #ScreenShot
