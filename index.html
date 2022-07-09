@@ -1,0 +1,99 @@
+<!doctype>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  <link rel="icon" href="icon.png">
+  <title>Weather app</title>  
+    </head>
+<body>
+  <h1>Weather app</h1>
+  <br>
+  <br>
+  <center>
+ <h2>Search your city</h2>
+<input id="city" placeholder="city name">
+<button onclick="show_temp()">Search</button>
+<script type="text/javascript">
+function show_temp(){
+ 
+document.getElementById("output").style.color="blue";
+document.getElementById("output").style.fontSize="20px";
+document.getElementById("cname").style.color="black";
+document.getElementById("cname").style.fontSize="20px";
+document.getElementById("current").style.color="blue";
+document.getElementById("current").style.fontSize="20px";
+document.getElementById("date").style.color="grey";
+document.getElementById("date").style.fontSize="20px";
+
+document.getElementById("humidity").style.color="blue";
+document.getElementById("humidity").style.fontSize="20px";
+document.getElementById("country").style.color="blue";
+document.getElementById("country").style.fontSize="20px";
+city =document.getElementById("city").value ;
+function timeConverter(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+  return time;
+}
+
+
+ httpRequest =new XMLHttpRequest();
+url="https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=1f5a349791558b7fa8b35cbaf67258fb&units=metric" ;
+httpRequest.open("GET",url) ;
+httpRequest.send();
+httpRequest.onreadystatechange=function(){
+    if(this.readyState == 4 && this.status == 200){
+        user_data =JSON.parse(this.responseText) ;
+        console.log(user_data.main.temp );
+        
+        const timeData = timeConverter(user_data.dt);
+        document.getElementById("output").innerHTML=user_data.main.temp ;
+        document.getElementById("cname").innerHTML=user_data.name ;
+        document.getElementById("current").innerHTML=user_data.weather[0].main;
+        document.getElementById("date").innerHTML=timeData;
+        document.getElementById("humidity").innerHTML=user_data.main.humidity;
+        document.getElementById("country").innerHTML=user_data.sys.country;
+      } 
+    }
+    }  
+    
+    </script>
+    <div class="card">
+     <p> <h3 id="cname">City name<h3><h3 id="country">Country<h3></p>
+      <h2 id="date">date and time</h2>
+      <table>
+          <tr>
+              <td><img src="icon.png">temperature(celsius):<h3 id="output"></h3></td>
+         </tr>
+         <tr>
+          <td><img src="icon.png">Current weather:<h3 id="current"></h3></td>
+     </tr>
+
+ <tr>
+  <td><img src="icon.png">humidity(%):<h3 id="humidity"></h3></td>
+</tr>
+      </table>
+  </div>
+   
+  </center>
+</body>
+
+
+
+
+
+</html>
+  
+    
+    
+    
