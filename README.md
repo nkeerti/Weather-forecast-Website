@@ -1,5 +1,7 @@
 # Weather-forecast-Website
 
+#Github hosted link: https://nkeerti.github.io/Weather-forecast-Website/
+
 #ScreenShot
 ![Screenshot (1150)](https://user-images.githubusercontent.com/98823131/178108659-03fad2c0-7f27-44df-a84d-f695ff2fdd6c.png)
 
